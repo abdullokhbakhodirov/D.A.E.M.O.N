@@ -56,3 +56,19 @@ def add_data2(qanda:str, id:str):
     conn.commit()
     cursor.close()
     conn.close()
+
+
+def get_username(id):
+    conn = psycopg2.connect(database="QA",
+                        host="localhost",
+                        user="postgres",
+                        password="Aegon070",
+                        port="5432")
+    cursor = conn.cursor()
+    select_query = "SELECT username FROM qaad WHERE id = %s;"
+    cursor.execute(select_query, (id,))
+    username = cursor.fetchone()[0]  
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return username

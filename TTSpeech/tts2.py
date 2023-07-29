@@ -3,7 +3,7 @@ import pygame
 import os
 
 
-def text_to_speech_uz(example_text):
+def text_to_speech_en(example_text):
     device = torch.device('cpu')
     torch.set_num_threads(4)
     local_file = 'v3_en.pt'

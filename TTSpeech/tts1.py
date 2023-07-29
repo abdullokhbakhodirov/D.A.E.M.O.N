@@ -1,11 +1,25 @@
 import pygame
 import os
+import subprocess
+import time
+import pyautogui
 
 
 def text_to_speech_en(example_text):
     voice = "en-US-ChristopherNeural"
     command = f'edge-tts --voice "{voice}" --text "{example_text}" --write-media "test.mp3"'
-    os.system(command)
+    try: 
+        subprocess.run(command, shell=True, check=True)
+        pyautogui.press('enter')
+        pyautogui.press('enter')
+        pyautogui.press('enter')
+        pyautogui.press('enter')
+    except:
+        subprocess.run(command, shell=True, check=True)
+        pyautogui.press('enter')
+        pyautogui.press('enter')
+        pyautogui.press('enter')
+        pyautogui.press('enter')
     pygame.mixer.init()
     pygame.mixer.music.load("test.mp3")
     try:

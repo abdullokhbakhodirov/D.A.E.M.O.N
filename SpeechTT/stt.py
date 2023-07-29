@@ -4,7 +4,7 @@ import openai
 
 
 def record_audio():
-    path = "D:/AI_DANNY/functions/recording.wav"
+    path = "D:/Created Programs/Daemon/SpeechTT/recording.wav"
     openai.api_key = "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"
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -18,7 +18,7 @@ def record_audio():
 
 
 def main_speech_to_text():
-    path = "D:/AI_DANNY/functions/recording.wav"
+    path = "D:/Created Programs/Daemon/SpeechTT/recording.wav"
     result = record_audio()
     os.remove(path=path)
     return result

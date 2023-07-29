@@ -2,14 +2,19 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
 
-def comparing(sequence_0, sequence_1):
+def comparing(list_of_sentences, target_sentence):
     model_name = "bert-base-cased-finetuned-mrpc"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
-    tokens = tokenizer.encode_plus(sequence_0, sequence_1, return_tensors="pt")
-    classification_logits = model(**tokens)[0]
-    results = torch.softmax(classification_logits, dim=1).tolist()[0]
-    return round(results[1] * 100)
+
+    results = []
+    for sentence in list_of_sentences:
+        tokens = tokenizer.encode_plus(sentence, target_sentence, return_tensors="pt")
+        classification_logits = model(**tokens)[0]
+        result = torch.softmax(classification_logits, dim=1).tolist()[0]
+        results.append(round(result[1] * 100))
+
+    return results
 
 
 # Wheather = "wants to know what's the weather like now", "wants to know what is the wheather for tomorrow", "wants to know what was the whether yesterday or previous days"
