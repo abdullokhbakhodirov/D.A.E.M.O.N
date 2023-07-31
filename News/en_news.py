@@ -38,3 +38,4 @@ def get_news_en():
         for entry in data.entries:
             all_news_en[entry.title] = entry.link
             i += 1
+    return all_news_en

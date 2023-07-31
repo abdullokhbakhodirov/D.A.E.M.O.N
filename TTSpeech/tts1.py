@@ -1,5 +1,4 @@
 import pygame
-import os
 import edge_tts
 
 async def text_to_speech_en(example_text):
