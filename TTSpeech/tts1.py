@@ -1,25 +1,15 @@
 import pygame
 import os
-import subprocess
-import time
-import pyautogui
+import edge_tts
 
-
-def text_to_speech_en(example_text):
+async def text_to_speech_en(example_text):
     voice = "en-US-ChristopherNeural"
-    command = f'edge-tts --voice "{voice}" --text "{example_text}" --write-media "test.mp3"'
-    try: 
-        subprocess.run(command, shell=True, check=True)
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        pyautogui.press('enter')
+    try:
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
     except:
-        subprocess.run(command, shell=True, check=True)
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        pyautogui.press('enter')
-        pyautogui.press('enter')
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
     pygame.mixer.init()
     pygame.mixer.music.load("test.mp3")
     try:
@@ -34,10 +24,14 @@ def text_to_speech_en(example_text):
         pygame.mixer.quit()
 
 
-def text_to_speech_uz(example_text):
+async def text_to_speech_uz(example_text):
     voice = "uz-UZ-SardorNeural"
-    command = f'edge-tts --voice "{voice}" --text "{example_text}" --write-media "test.mp3"'
-    os.system(command)
+    try:
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
+    except:
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
     pygame.mixer.init()
     pygame.mixer.music.load("test.mp3")
     try:
@@ -52,10 +46,14 @@ def text_to_speech_uz(example_text):
         pygame.mixer.quit()
 
 
-def text_to_speech_ru(example_text):
+async def text_to_speech_ru(example_text):
     voice = "ru-RU-DmitryNeural"
-    command = f'edge-tts --voice "{voice}" --text "{example_text}" --write-media "test.mp3"'
-    os.system(command)
+    try:
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
+    except:
+        communicate = edge_tts.Communicate(example_text, voice)
+        await communicate.save('test.mp3')
     pygame.mixer.init()
     pygame.mixer.music.load("test.mp3")
     try:
