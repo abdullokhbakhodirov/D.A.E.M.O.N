@@ -92,5 +92,5 @@ while flag:
             elif f == 'img':
                 ...
     if not fl:
-        answer = chat.gpt_turbo(question, uni_code)
+        answer = chat.chatgpt(question)
         asyncio.run(tts.text_to_speech_en(answer))
