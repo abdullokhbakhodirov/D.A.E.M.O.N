@@ -11,7 +11,6 @@ import asyncio
 
 wwd.wake_word()
 uni_code = code.get_unique_code_from_file()
-username = pgadmin.get_username(uni_code)
 h = True
 if not uni_code:
     asyncio.run(tts.text_to_speech_en("You are new in our program so can I ask you some questions to register you"))
@@ -36,7 +35,10 @@ if not uni_code:
         else:
             asyncio.run(tts.text_to_speech_en("Sorry but you can't use this program"))
             break
-
+try: 
+    username = pgadmin.get_username(uni_code)
+except: 
+    username = pgadmin.get_username(codee)
 if not h:
     import sys
     sys.exit()
