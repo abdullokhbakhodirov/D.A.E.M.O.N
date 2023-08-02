@@ -6,6 +6,7 @@ from SpeechTT import stt
 from TTSpeech import tts1 as tts
 from wake_word_detection import wwd 
 from Weather import weather_get as weather
+from music.music_player import play_music_from_folder, play_music_from_file_dialog
 import asyncio
 
 
@@ -83,14 +84,22 @@ while flag:
                     asyncio.run(tts.text_to_speech_en("I have printed last news from BBC"))
                 fl = True
                 break
-                    
-
             elif f == 'music':
-                ...
+                asyncio.run(tts.text_to_speech_en("If you want to stop playing a music, say: "))
+                a = play_music_from_folder("C:/Users/abdul/Music")
+                if not a:
+                    asyncio.run(tts.text_to_speech_en("I can't find any musics in your music folder"))
+                fl = True
+                break
             elif f == 'player':
-                ...
+                play_music_from_file_dialog()
+                fl = True
+                break
             elif f == 'img':
-                ...
+                im = img.img_descripte()
+                asyncio.run(tts.text_to_speech_en(f"These are the descriptions of this image: 1.{im[0]} 2.{im[1]}"))
+                fl = True
+                break
     if not fl:
         answer = chat.chatgpt(question)
         asyncio.run(tts.text_to_speech_en(answer))

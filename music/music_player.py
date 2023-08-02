@@ -96,6 +96,8 @@ def play_music_from_file_dialog():
     # Clean up Pygame resources
     pygame.mixer.quit()
 
-# Call the function to play music selected by the user
-play_music_from_file_dialog()
+
+# ====================================================================================================================
+
+
 
