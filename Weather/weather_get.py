@@ -1,6 +1,14 @@
 import requests
 from geopy.geocoders import Nominatim
 import geocoder
+from translate import Translator
+
+def translate_country_translate_api(name, target_language='en'):
+    translator = Translator(to_lang=target_language)
+    translated_name = translator.translate(name)
+
+    return translated_name
+
 
 
 def get_weather(CITY):
@@ -25,5 +33,17 @@ def get_location():
     location = Nomi_locator.reverse(f"{latitude}, {longitude}")
     if location and 'address' in location.raw:
         address = location.raw['address']
+        state = address.get('state', '')
         city = address.get('city', '')
-        return get_weather(city)
+        country = (address.get('country', '')).replace('ʻ', "'")
+        if state:
+            return state, translate_country_translate_api(country)
+        elif city:
+            return city, translate_country_translate_api(country)
+    
+
+def get_degree():
+    city = (get_location())[0]
+    temperature = get_weather(city)
+    print(temperature)
+    return temperature

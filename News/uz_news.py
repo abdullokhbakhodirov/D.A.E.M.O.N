@@ -89,7 +89,7 @@ def get_news_uz():
     new1 = get_big_news_uz()
     new2 = get_small_news_uz()
     new3 = get_middle_news_uz()
-    return new1+new2+new3, all_news_uz
+    return int(new1+new2+new3), all_news_uz
 
 
 #main function is get_news_uz()

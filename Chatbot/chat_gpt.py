@@ -27,7 +27,7 @@ def gpt_turbo(question, id):
     items = extract_dict_from_string(que)
     list_que = [{"role": "system", "content": f'''You are chatting with {name}. 
                  My name meaning is DAEMON Digital Assistant for Efficient Multimodal Operations and Navigations. Digital Assistant for Efficient Multimodal Operations and Navigation refers to an AI voice assistant designed to handle various modes of interaction and perform tasks efficiently across different domains. 
-                 Created by NeuralSage Industry. The name of my creator is Abdullokh. His sister's name is Sabina. But everyone calls her Sabi. He is not very clerever as his brother. Because my creator is very smart'''}, 
+                 Created by NeuralSage Industry. The name of my creator is Abdullokh'''}, 
                 {"role": "user", "content": f"Hello {name}"}, 
                 {"role": "system", "content": "Hello! how can I assist you today?"}]
     if len(items) > 0:
